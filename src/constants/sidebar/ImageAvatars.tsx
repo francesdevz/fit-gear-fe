@@ -6,7 +6,17 @@ interface imageAvatarProps {
   userAvatar: string;  
 }
 
-const ImageAvatars: React.FC<imageAvatarProps> = ({ userName, userAvatar  }) => {
+/**
+ * A reusable Avatar component that displays the user's profile picture or a default image.
+ * It allows customization of the avatar's appearance, including hover effects.
+ * 
+ * @param {imageAvatarProps} props - The properties passed to the component.
+ * @param {string} props.userName - The name of the user, which is used as the alt text for the avatar.
+ * @param {string} props.userAvatar - The URL of the user's avatar image.
+ * 
+ * @returns {JSX.Element} The rendered Avatar component.
+ */
+const ImageAvatars: React.FC<imageAvatarProps> = ({ userName, userAvatar }) => {
   return (
     <Stack direction="row">
       <Avatar 
@@ -25,4 +35,4 @@ const ImageAvatars: React.FC<imageAvatarProps> = ({ userName, userAvatar  }) => 
   );
 }
 
-export default ImageAvatars
+export default ImageAvatars;

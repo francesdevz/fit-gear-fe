@@ -1,12 +1,13 @@
 
 export const loginPayload = {
-    userName: '',
-    password: '',
+    userName: null,
+    password: null,
 }
 
 export const registerPayload = {
-    fullName: '',
+    fullName: "",
     emailAddress: "",
-    password: '',
-    repeatPassword: ""
+    password: "",
+    repeatPassword: "",
+    showSpinner: false
 }

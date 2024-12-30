@@ -1,7 +1,7 @@
 
 import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
-import { CHECK_TOKEN, TOKEN_VALIDATED, TOKEN_EXPIRED } from "./../actions/token";
+import { CHECK_TOKEN, TOKEN_VALIDATED, TOKEN_EXPIRED } from "../actions/defaultAction/token";
 
 const validateApiCall = (token) => axios.post("", { token });
 

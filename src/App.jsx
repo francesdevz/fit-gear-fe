@@ -1,16 +1,16 @@
-import React,{ useState, useEffect, Suspense  } from 'react'
+import React,{ useEffect, Suspense  } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Sidebar from './constants/sidebar/Sidebar'
-import { CHECK_TOKEN } from "./constants/actions/token";
-
-
+import { CHECK_TOKEN } from "./constants/actions/defaultAction/token";
+import Spinner from '../src/constants/components/Spinner'
 const LoginPage = React.lazy(() => import('./containers/Pages/LoginPage'));
 const RegistrationPage = React.lazy(() => import('./containers/Pages/RegistrationPage'));
 
 const App = ({ token, dispatch }) => {
   
+  // this function is for tokens and for security
   useEffect(() => {
     if (token) {
       dispatch({ type: CHECK_TOKEN, payload: token });
@@ -22,7 +22,7 @@ const App = ({ token, dispatch }) => {
        <Router>
         <div className="App">
           <Sidebar/>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner spin={true}/>}>
             <Routes>
               <Route path='/login' element={<LoginPage />} />
               <Route path='/register' element={<RegistrationPage />} />

@@ -22,6 +22,16 @@ interface CartBadge {
     cartCount: number;   
 }
   
+/**
+ * A customized shopping cart badge component that displays the number of items in the cart.
+ * This component uses Material-UI's Badge and IconButton components to display a badge with the cart count.
+ * The badge content is updated dynamically based on the `cartCount` prop.
+ * 
+ * @param {CartBadge} props - The properties passed to the component.
+ * @param {number} props.cartCount - The number of items in the cart, used to display the badge content.
+ * 
+ * @returns {JSX.Element} The rendered shopping cart badge with an icon.
+ */
 const CustomizedBadges: React.FC<CartBadge> = ({ cartCount }) => {
   return (
     <IconButton aria-label="cart">
@@ -32,4 +42,4 @@ const CustomizedBadges: React.FC<CartBadge> = ({ cartCount }) => {
   );
 }
 
-export default CustomizedBadges
+export default CustomizedBadges;

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import './CreateAccount.css';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-
+import { useSelector } from 'react-redux';
 import * as CONST from '../payload/payload'
 
 export default function LoginAccount() {
@@ -9,7 +8,7 @@ export default function LoginAccount() {
   const [state, setState] = useState(CONST.loginPayload)
 
   const [email, setEmail] = useState('');
-
+  
   const handleEmailSubmit = (e) => {
     e.preventDefault();
     

@@ -1,24 +1,25 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import logger from "redux-logger"
+import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
-import authReducer from "../actions/authActions"; 
+import authReducer from "../actions/defaultAction/authActions";
 import socketReducer from "../socket/socketReducer";
-
-import rootSaga from "../saga/rootSaga"; 
+import rootSaga from "../saga/rootSaga";
+import registerReducer from '../actions/reducers/registerReducer'
 
 const sagaMiddleware = createSagaMiddleware();
 
-const rootReducer = combineReducers({
-    auth: authReducer,
-    socket: socketReducer
-})
+const staticReducers = {
+  auth: authReducer,
+  socket: socketReducer,
+  register: registerReducer
+};
 
 const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware, logger),
+  reducer: staticReducers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: true, serializableCheck: false }).concat(sagaMiddleware, logger),
 });
 
 sagaMiddleware.run(rootSaga);
 
-export default store
+export default store;
