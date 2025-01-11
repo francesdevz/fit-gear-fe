@@ -1,5 +1,5 @@
 import RegisterAccount from "../../constants/components/RegisterAccount"
-import registarion_page_img from '../../constants/images/registarion_page_img.jpg'
+import registarion_page_img from '../../constants/utils/images/registarion_page_img.jpg'
 
 const RegistrationPage = () => {
     return (

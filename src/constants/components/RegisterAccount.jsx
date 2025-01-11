@@ -16,7 +16,7 @@ import { connect, useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import LinkBtn from './LinkBtn';
 import { submitRegisteredUser, setField } from '../actions/reducers/registerReducer';
-import { validateRegisterForm } from '../validators/validateRegisterForm';
+import { validateRegisterForm } from '../utils/validateRegisterForm';
 import Spinner from '../components/Spinner';
 
 /**

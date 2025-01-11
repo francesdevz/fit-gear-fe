@@ -1,41 +1,58 @@
-import React,{ useEffect, Suspense  } from 'react'
+import React,{ useEffect, Suspense } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate,  } from 'react-router-dom';
 import './App.css'
-import Sidebar from './constants/sidebar/Sidebar'
-import { CHECK_TOKEN } from "./constants/actions/defaultAction/token";
+import Sidebar from './constants/components/Sidebar'
 import Spinner from '../src/constants/components/Spinner'
 const LoginPage = React.lazy(() => import('./containers/Pages/LoginPage'));
 const RegistrationPage = React.lazy(() => import('./containers/Pages/RegistrationPage'));
+const HomePage = React.lazy(() => import('./containers/MainPage/HomePage'));
+const ShopPage = React.lazy(() => import('./containers/MainPage/ShopePage'));
+const AboutPage = React.lazy(() => import('./containers/MainPage/AboutPage'));
+const ContactPage = React.lazy(() => import('./containers/MainPage/ContactPage'));
 
-const App = ({ token, dispatch }) => {
+import { validateToken } from './constants/auth/authSaga';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { getCookies } from './constants/auth/cookies';
+
+const App = (props) => {
+
+  const cookieToken = getCookies()
   
-  // this function is for tokens and for security
   useEffect(() => {
-    if (token) {
-      dispatch({ type: CHECK_TOKEN, payload: token });
-    }
-  }, [token, dispatch]);
+    props.validateToken(cookieToken); 
+  }, [cookieToken]);
 
   return (
     <>
-       <Router>
-        <div className="App">
-          <Sidebar/>
-          <Suspense fallback={<Spinner spin={true}/>}>
-            <Routes>
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/register' element={<RegistrationPage />} />
-            </Routes>
-          </Suspense>
-        </div>
-      </Router>
+      <div className="App">
+        <Sidebar details={props.auth.response}/>
+        <Suspense fallback={<Spinner spin={true} />}>
+          <Routes>
+            {!props.auth.isTokenValid && (
+               <>
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/register' element={<RegistrationPage />} />
+              </>
+            )}
+            {/* <Route path='/home' element={<HomePage />} />
+            <Route path='/shop' element={<ShopPage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/contact' element={<ContactPage />} /> */}
+          </Routes>
+        </Suspense>
+      </div>
     </>
   )
 }
 
 const mapStateToProps = (state) => ({
-  token: state.auth.token,
+  auth: state.auth,
+  accessToken: state.login.accessToken
 })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+validateToken
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

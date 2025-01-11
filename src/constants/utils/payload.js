@@ -1,7 +1,9 @@
 
 export const loginPayload = {
-    userName: null,
-    password: null,
+    emailAddress: '',
+    password: '',
+    showSpinner: false,
+    token: null
 }
 
 export const registerPayload = {

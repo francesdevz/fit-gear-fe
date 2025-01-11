@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import * as constants from '../../payload/payload';
+import * as constants from '../../utils/payload';
 import submitFormData from '../../apis/submitFormData';
-import * as route from '../../routes/Routes';
+import * as route from '../../utils/Routes';
 import { METHOD } from '../../apis/apiCall';
 
 /**

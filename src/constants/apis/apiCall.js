@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axiosInstance from "./axiosInstance";
 
 /**
  * HTTP methods supported by the API.
@@ -24,15 +24,17 @@ export const METHOD = {
  */
 export const ApiCall = (method, url, payload) => {
     switch (method) {
-        case METHOD.POST:
-            return Axios.post(url, payload);
-        case METHOD.GET:
-            return Axios.get(url, { params: payload });
-        case METHOD.PUT:
-            return Axios.put(url, payload);
-        case METHOD.DELETE:
-            return Axios.delete(url, { data: payload });
-        default:
-            throw new Error(`Unsupported method: ${method}`);
+      case METHOD.POST:
+        return axiosInstance.post(url, payload);
+      case METHOD.GET:
+        return axiosInstance.get(url, { params: payload });
+      case METHOD.PUT:
+        return axiosInstance.put(url, payload);
+      case METHOD.DELETE:
+        return axiosInstance.delete(url, { data: payload });
+      default:
+        throw new Error(`Unsupported method: ${method}`);
     }
-};
+  };
+
+

@@ -14,6 +14,7 @@ import { ApiCall, METHOD } from '../apis/apiCall';
 const submitFormData = async (method, routeUrl, data) => {
   try {
     const response = await ApiCall(method, routeUrl, data);
+    console.log(response)
     return response.data;
   } catch (error) {
     console.error("API error: ", error);

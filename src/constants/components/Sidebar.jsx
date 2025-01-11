@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import brand_logo from "../images/brand_logo.png";
+import brand_logo from "../utils/images/brand_logo.png";
 import NavbarLink from "./navbarLink";
 import ImageAvatars from "./ImageAvatars";
 import CustomizedBadges from "./cartBadge";
+
 import "./sidebar.css";
 
 /**
@@ -31,8 +32,11 @@ const Sidebar = (props) => {
           <NavbarLink navbarName="About" to="/" />
           <NavbarLink navbarName="Contact" to="/" />
           <div className="avatar-badge-container">
-            <ImageAvatars userName={props?.userName} userAvatar={props?.userAvatar}/>
-            <NavbarLink navbarName="Log In" to="/login" />
+            <ImageAvatars userName={props?.details?.name} userAvatar={props?.userAvatar}/>
+            <NavbarLink 
+              navbarName={`${props?.details?.name ? props.details.name : 'Log In'}`} 
+              to={`${props?.details?.name ? "" : '/login'}`} 
+            />
             <CustomizedBadges/>
           </div>
         </div>
