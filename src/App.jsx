@@ -7,7 +7,7 @@ import Spinner from '../src/constants/components/Spinner'
 const LoginPage = React.lazy(() => import('./containers/Pages/LoginPage'));
 const RegistrationPage = React.lazy(() => import('./containers/Pages/RegistrationPage'));
 const HomePage = React.lazy(() => import('./containers/MainPage/HomePage'));
-const ShopPage = React.lazy(() => import('./containers/MainPage/ShopePage'));
+const ShopPage = React.lazy(() => import('./containers/MainPage/ShopPage'));
 const AboutPage = React.lazy(() => import('./containers/MainPage/AboutPage'));
 const ContactPage = React.lazy(() => import('./containers/MainPage/ContactPage'));
 
@@ -35,10 +35,10 @@ const App = (props) => {
                 <Route path='/register' element={<RegistrationPage />} />
               </>
             )}
-            {/* <Route path='/home' element={<HomePage />} />
+            <Route path='/' element={<HomePage />} />
             <Route path='/shop' element={<ShopPage />} />
             <Route path='/about' element={<AboutPage />} />
-            <Route path='/contact' element={<ContactPage />} /> */}
+            <Route path='/contact' element={<ContactPage />} />
           </Routes>
         </Suspense>
       </div>

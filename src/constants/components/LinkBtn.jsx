@@ -15,11 +15,12 @@ import { Link } from "react-router-dom"
  * @param {string} props.label 
  * @returns {JSX.Element}
  */
-const LinkBtn = ({style, redirectStr, label}) => {
+const LinkBtn = ({style, redirectStr, label, classed = null}) => {
     return (
         <Link
             style={style}
             to={redirectStr}
+            className={classed}
         >
             {label}
         </Link>

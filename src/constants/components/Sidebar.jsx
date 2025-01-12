@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import brand_logo from "../utils/images/brand_logo.png";
+import WebsiteLogoSvg from "./WebsiteLogoSvg";
 import NavbarLink from "./navbarLink";
 import ImageAvatars from "./ImageAvatars";
 import CustomizedBadges from "./cartBadge";
@@ -22,15 +22,15 @@ const Sidebar = (props) => {
   return (
     <React.Fragment>
       <div className="container">
-        <div className="image-container">
-          <img src={brand_logo} alt="Brand Logo" className="image-class" />
+        <div className="image-container">   
+          <WebsiteLogoSvg/>
           <p style={{fontSize: '40px'}}>FitGear</p>
         </div>
         <div className="static-nav-container">
           <NavbarLink navbarName="Home" to="/" />
-          <NavbarLink navbarName="Shop" to="/" />
-          <NavbarLink navbarName="About" to="/" />
-          <NavbarLink navbarName="Contact" to="/" />
+          <NavbarLink navbarName="Shop" to="/shop" />
+          <NavbarLink navbarName="About" to="/about" />
+          <NavbarLink navbarName="Contact" to="/contact" />
           <div className="avatar-badge-container">
             <ImageAvatars userName={props?.details?.name} userAvatar={props?.userAvatar}/>
             <NavbarLink 
